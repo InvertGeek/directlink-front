@@ -25,20 +25,20 @@ const Container = styled.div`
 
 function FileDialog({data}) {
 
-    const {name, size, link} = data
+    const {name, size, url} = data
 
 
     return (
         <Container className={'shadow'}>
             <h3 className={'text-hide'}>文件: {name}</h3>
             <p>{formatFileSize(size ?? 0)}</p>
-            <CopyToClipboard text={link} onCopy={() => {
+            <CopyToClipboard text={url} onCopy={() => {
                 notifyMsg('复制成功!', {toastId: 'copy-to-clipboard'})
             }}>
                 <Button variant={'outlined'}>复制地址</Button>
             </CopyToClipboard>
             <Button variant={'contained'} onClick={() => {
-                window.open(link)
+                window.open(url)
             }}>打开</Button>
         </Container>
     );

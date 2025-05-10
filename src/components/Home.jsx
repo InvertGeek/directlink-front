@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 import logo from '../assets/logo.png'
 import FileUpload from "./file/FileUpload.jsx";
+import FileHistory from "./file/FileHistory.jsx";
 
 const Container = styled.div`
     margin: 5vh auto;
@@ -61,6 +62,7 @@ function Home(props) {
                 <h1>DirectLink</h1>
             </div>
             <FileUpload/>
+            <FileHistory/>
         </Container>
     );
 }

@@ -5,6 +5,7 @@ import axios from "axios";
 import {formatFileSize} from "../../utils/CommonUtils.js";
 import Semaphore from "@chriscdn/promise-semaphore";
 import {addUploadFile} from "./upload/UploadDialog.jsx";
+import {addHistory} from "./FileHistory.jsx";
 
 const Container = styled.div`
     display: flex;
@@ -89,6 +90,11 @@ export async function uploadFile(upFile) {
     } finally {
         upFile.complete = true
         semaphore.release()
+        addHistory({
+            name: file.name,
+            size: file.size,
+            url: upFile.result
+        })
     }
     upFile.progress = 100
     upFile.tip = `上传成功 ${formatFileSize(file.size)}`

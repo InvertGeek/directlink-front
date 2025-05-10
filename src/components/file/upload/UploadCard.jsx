@@ -85,7 +85,7 @@ export function ProgressCard({file: upFile}) {
                 {
                     name: file.name,
                     size: file.size,
-                    link: result,
+                    url: result,
                 }
             }/>)
         }
