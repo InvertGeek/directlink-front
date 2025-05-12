@@ -90,11 +90,13 @@ export async function uploadFile(upFile) {
     } finally {
         upFile.complete = true
         semaphore.release()
-        addHistory({
-            name: file.name,
-            size: file.size,
-            url: upFile.result
-        })
+        if (upFile.result) {
+            addHistory({
+                name: file.name,
+                size: file.size,
+                url: upFile.result
+            })
+        }
     }
     upFile.progress = 100
     upFile.tip = `上传成功 ${formatFileSize(file.size)}`
