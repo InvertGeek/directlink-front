@@ -78,8 +78,12 @@ export async function uploadFile(upFile) {
             },
             signal: controller.signal
         })
-        // fileResultProxy.push({file: upFile, shareInfoData: response.data})
         upFile.result = response.data
+        addHistory({
+            name: file.name,
+            size: file.size,
+            url: upFile.result
+        })
     } catch (e) {
         upFile.error = true
         upFile.tip = '上传失败'
@@ -90,13 +94,6 @@ export async function uploadFile(upFile) {
     } finally {
         upFile.complete = true
         semaphore.release()
-        if (upFile.result) {
-            addHistory({
-                name: file.name,
-                size: file.size,
-                url: upFile.result
-            })
-        }
     }
     upFile.progress = 100
     upFile.tip = `上传成功 ${formatFileSize(file.size)}`
