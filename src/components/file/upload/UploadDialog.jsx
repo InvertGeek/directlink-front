@@ -4,6 +4,7 @@ import {ProgressCard} from "./UploadCard.jsx";
 import {notifyMsg} from "../../../utils/CommonUtils.js";
 import {addDialog, dialogProxy} from "../../../utils/DialogContainer.jsx";
 import {proxy, ref, useSnapshot} from "valtio";
+import {useEffect} from "react";
 import {CopyToClipboard} from "react-copy-to-clipboard/src";
 
 
@@ -91,6 +92,21 @@ function UploadDialog() {
             )
         }
     }
+
+    useEffect(() => {
+        const listener = function (event) {
+            if (!complete) {
+                event.preventDefault()
+                const msg = '文件正在上传中,是否确认关闭?'
+                event.returnValue = msg
+                return msg
+            }
+        }
+        window.addEventListener('beforeunload', listener)
+        return () => {
+            window.removeEventListener('beforeunload', listener)
+        }
+    }, [complete]);
 
     return (
         <Container className={'shadow'}>
