@@ -12,6 +12,14 @@ body {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
+.gradient-text {
+  background: linear-gradient(to right, rgba(64, 91, 254, 0.66), rgba(171, 25, 254, 0.72));
+  background-clip: text; /* 适用于大多数浏览器 */
+  -webkit-background-clip: text; /* 适用于 WebKit 浏览器 */
+  color: transparent; /* 使文本颜色透明 */
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
+}
+
 .text-hide {
   white-space: nowrap; /* 禁止换行 */
   overflow: hidden; /* 隐藏溢出部分 */

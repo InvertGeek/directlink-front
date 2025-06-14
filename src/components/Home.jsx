@@ -18,6 +18,7 @@ const Container = styled.div`
     gap: 20px;
     align-items: center;
 
+
     .title {
         display: flex;
         align-items: center;
@@ -26,11 +27,6 @@ const Container = styled.div`
 
         h1 {
             font-size: max(3rem, 50px);
-            background: linear-gradient(to right, rgba(64, 91, 254, 0.66), rgba(171, 25, 254, 0.72));
-            background-clip: text; /* 适用于大多数浏览器 */
-            -webkit-background-clip: text; /* 适用于 WebKit 浏览器 */
-            color: transparent; /* 使文本颜色透明 */
-            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
         }
 
         .logo {
@@ -59,10 +55,19 @@ function Home(props) {
                 <div className="logo">
                     <img src={logo} alt="logo"/>
                 </div>
-                <h1>DirectLink</h1>
+                <h1 className={'gradient-text'}>DirectLink</h1>
             </div>
             <FileUpload/>
             <FileHistory/>
+            <div class="github">
+                <a
+                    href={'https://github.com/InvertGeek/directlink'}
+                    className={'gradient-text'}
+                    target="_blank"
+                >
+                    永久更新地址: https://github.com/InvertGeek/directlink
+                </a>
+            </div>
         </Container>
     );
 }
